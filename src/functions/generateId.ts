@@ -1,3 +1,3 @@
 export const generateId = (): string => {
-    return ''
+    return Math.random().toString().substring(2, 10)
 }
