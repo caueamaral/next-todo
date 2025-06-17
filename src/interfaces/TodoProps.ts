@@ -1,5 +1,5 @@
 export interface TodoProps {
-    id: string;
-    text: string;
-    completed: boolean;
+    id: string
+    text: string
+    completed: boolean
 }
