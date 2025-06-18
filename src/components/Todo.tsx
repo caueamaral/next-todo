@@ -11,7 +11,7 @@ export default function Todo() {
     const { toggleTodo } = useToggleTodo()
 
     return (
-        <article className="bg-white mt-10 max-w-sm mx-auto p-5 rounded-md shadow-lg">
+        <article className="bg-white mt-10 max-w-md mx-auto p-5 rounded-md shadow-lg">
             <header>
                 <h1 className="text-center font-bold text-2xl mb-5">
                     Todo List
@@ -38,18 +38,21 @@ export default function Todo() {
                     {todos.map((todo:TodoProps) => (
                         <li
                             key={todo.id}
-                            className=""
+                            className="flex items-center justify-between p-2 hover:bg-gray-50"
                         >
-                            <div className="flex items-center">
+                            <div className="flex flex-grow items-center">
                                 <input
                                     type="checkbox"
                                     checked={todo.completed}
                                     onChange={() => toggleTodo(todo.id)}
                                     className="mr-2 form-checkbox text-blue-500"
                                 />
-                                <span>
+                                <span className={todo.completed ? 'flex-grow line-through text-gray-400' : 'flex-grow' }>
                                     {todo.text}
                                 </span>
+                                <button className="cursor-pointer text-red-500 hover:text-red-700">
+                                    x
+                                </button>
                             </div>
                         </li>
                     ))}
