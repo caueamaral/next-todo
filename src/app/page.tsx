@@ -8,7 +8,7 @@ export default function Home() {
   const input = useTodoStore((state) => state.input)
 
   return (
-    <main>
+    <main className="mx-3">
       <Todo />
     </main>
   )
