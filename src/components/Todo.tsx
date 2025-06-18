@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { useTodoStore } from '../store/useTodoStore'
 import { useAddTodo } from '../hooks/useAddTodo'
 import { useToggleTodo } from '../hooks/useToggleTodo'
@@ -7,8 +8,15 @@ export default function Todo() {
     const input = useTodoStore(state => state.input)
     const setInput = useTodoStore(state => state.setInput)
     const todos = useTodoStore(state => state.todos)
+    
     const { addTodo } = useAddTodo()
     const { toggleTodo } = useToggleTodo()
+
+    const inputRef = useRef<HTMLInputElement>(null)
+
+    useEffect(() => {
+        inputRef.current?.focus()
+    }, [])
 
     return (
         <article className="bg-white mt-10 max-w-md mx-auto p-5 rounded-md shadow-lg">
@@ -22,6 +30,7 @@ export default function Todo() {
                     <input
                         type="text"
                         placeholder="Add Todo"
+                        ref={inputRef}
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && addTodo(input)}
