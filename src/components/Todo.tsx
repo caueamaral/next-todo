@@ -61,10 +61,15 @@ export default function Todo() {
                                 <span
                                     className={
                                         todo.completed
-                                            ? 'flex-grow mx-2 line-through text-gray-400'
-                                            : 'flex-grow mx-2'
+                                            ? 'flex-grow mx-2 w-72 line-through text-gray-400'
+                                            : 'flex-grow mx-2 w-72'
                                     }
-                                    style={{ lineHeight: '1.1em' }}
+                                    style={{
+                                        lineHeight: '1.1em',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                        whiteSpace: 'nowrap'
+                                    }}
                                 >
                                     {todo.text}
                                 </span>
