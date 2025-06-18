@@ -6,7 +6,7 @@ export const useToggleTodo = () => {
     const todos = useTodoStore(state => state.todos)
     const setTodos = useTodoStore(state => state.setTodos)
 
-    const toggleTodo = (id: string) => {
+    const toggleTodo = (id: number) => {
         setTodos(
             todos.map(todo =>
                 todo.id === id
