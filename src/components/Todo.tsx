@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useTodoStore } from '../store/useTodoStore'
 import { useAddTodo } from '../hooks/useAddTodo'
+import { useDeleteTodo } from '../hooks/useDeleteTodo'
 import { useToggleTodo } from '../hooks/useToggleTodo'
 import { TodoProps } from '../interfaces/TodoProps'
 
@@ -10,6 +11,7 @@ export default function Todo() {
     const todos = useTodoStore(state => state.todos)
     
     const { addTodo } = useAddTodo()
+    const { deleteTodo } = useDeleteTodo()
     const { toggleTodo } = useToggleTodo()
 
     const inputRef = useRef<HTMLInputElement>(null)
@@ -59,7 +61,10 @@ export default function Todo() {
                                 <span className={todo.completed ? 'flex-grow line-through text-gray-400' : 'flex-grow' }>
                                     {todo.text}
                                 </span>
-                                <button className="cursor-pointer text-red-500 hover:text-red-700">
+                                <button
+                                    onClick={() => deleteTodo(todo.id)}
+                                    className="cursor-pointer text-red-500 hover:text-red-700"
+                                >
                                     x
                                 </button>
                             </div>
