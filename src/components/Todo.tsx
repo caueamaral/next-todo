@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTodoStore } from '../store/useTodoStore'
 import { useAddTodo } from '../hooks/useAddTodo'
 import { useDeleteTodo } from '../hooks/useDeleteTodo'
@@ -17,7 +17,10 @@ export default function Todo() {
     const inputRef = useRef<HTMLInputElement>(null)
     const dialogRef = useRef<HTMLDialogElement>(null)
 
-    const handleDialogDeleteTodo = () => {
+    const [selectedTodoId, setSelectedTodoId] = useState<number | null>(null)
+
+    const handleDialogDeleteTodo = (id: number) => {
+        setSelectedTodoId(id)
         dialogRef?.current?.showModal()
     }
 
@@ -87,7 +90,7 @@ export default function Todo() {
                                         </svg>
                                     </button>
                                     <button
-                                        onClick={() => handleDialogDeleteTodo()}
+                                        onClick={() => handleDialogDeleteTodo(todo.id)}
                                         className="cursor-pointer ml-3 text-red-500 hover:text-red-700"
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4">
@@ -133,6 +136,11 @@ export default function Todo() {
                         </button>
                         <button
                             value="ok"
+                            onClick={() => {
+                                if (selectedTodoId !== null) {
+                                    deleteTodo(selectedTodoId)
+                                }
+                            }}
                             className="cursor-pointer bg-red-500 text-white py-2 px-4 rounded"
                         >
                             Yes, delete!
