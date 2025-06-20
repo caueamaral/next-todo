@@ -26,7 +26,7 @@ export default function Todo() {
 
     useEffect(() => {
         inputRef.current?.focus()
-    }, [])
+    }, [todos])
 
     return (
         <>
