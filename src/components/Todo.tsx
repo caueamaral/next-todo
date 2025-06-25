@@ -5,6 +5,7 @@ import { useDeleteTodo } from '../hooks/useDeleteTodo'
 import { useToggleTodo } from '../hooks/useToggleTodo'
 import { TodoProps } from '../interfaces/TodoProps'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 export default function Todo() {
     const input = useTodoStore(state => state.input)
@@ -99,13 +100,7 @@ export default function Todo() {
                         ))}
                     </ul>
                 </main>
-                {todos.length == 0 && (
-                    <footer>
-                        <p className="text-center text-gray-500 mt-4 text-sm">
-                            No todos yet. Add some todos. 
-                        </p>
-                    </footer>
-                )}
+                <Footer />
             </article>
             <dialog ref={dialogRef}>
                 <form method="dialog" className="bg-white fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded p-7 w-96">
