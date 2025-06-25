@@ -4,6 +4,7 @@ import { useAddTodo } from '../hooks/useAddTodo'
 import { useDeleteTodo } from '../hooks/useDeleteTodo'
 import { useToggleTodo } from '../hooks/useToggleTodo'
 import { TodoProps } from '../interfaces/TodoProps'
+import Header from '../components/Header'
 
 export default function Todo() {
     const input = useTodoStore(state => state.input)
@@ -31,11 +32,7 @@ export default function Todo() {
     return (
         <>
             <article className="bg-white mt-10 max-w-md mx-auto p-7 rounded-md shadow-lg">
-                <header>
-                    <h1 className="text-center font-bold text-2xl mb-5">
-                        Todo List
-                    </h1>
-                </header>
+                <Header />
                 <main>
                     <div className="flex">
                         <input
