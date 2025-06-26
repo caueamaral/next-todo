@@ -8,7 +8,6 @@ export default function TodoItem({ todo }: { todo:TodoProps }) {
 
     const handleDialogDeleteTodo = (id: number) => {
         setSelectedTodoId(id)
-        // dialogRef?.current?.showModal()
     }
 
     return (
