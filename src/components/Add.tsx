@@ -27,8 +27,8 @@ export default function Add() {
                 className="border border-gray-300 flex-grow py-1 px-2"
             />
             <button
-                onClick={() => addTodo(input)}
                 className="bg-blue-500 text-white px-4 rounded-r-md cursor-pointer hover:bg-blue-400"
+                onClick={() => addTodo(input)}
             >
                 Add
             </button>
