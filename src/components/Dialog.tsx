@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDeleteTodo } from '../hooks/useDeleteTodo'
 
 export default function Dialog() {
-    const [selectedTodoId, setSelectedTodoId] = useState<number | null>(null)
+    const [selectedTodoId] = useState<number | null>(null)
     const { deleteTodo } = useDeleteTodo()
 
     return (

@@ -1,13 +1,16 @@
-import { useState } from 'react'
+import { useRef } from 'react'
+import { useTodoStore } from '../store/useTodoStore'
 import { TodoProps } from '../interfaces/TodoProps'
 import { useToggleTodo } from '../hooks/useToggleTodo'
 
 export default function TodoItem({ todo }: { todo:TodoProps }) {
     const { toggleTodo } = useToggleTodo()
-    const [selectedTodoId, setSelectedTodoId] = useState<number | null>(null)
+    const setSelectedId = useTodoStore(state => state.setSelectedId)
+    const dialogRef = useRef<HTMLDialogElement>(null)
 
     const handleDialogDeleteTodo = (id: number) => {
-        setSelectedTodoId(id)
+        setSelectedId(id)
+        dialogRef?.current?.showModal()
     }
 
     return (
