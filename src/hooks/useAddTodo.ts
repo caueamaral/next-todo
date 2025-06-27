@@ -11,17 +11,17 @@ export const useAddTodo = () => {
 
     const addTodo = (text: string) => {
         const trimmedText = text.trim()
-        
-        if (trimmedText) {
-            const newTodo: TodoProps = {
-                id: generateId(),
-                text: trimmedText,
-                completed: false
-            }
 
-            setTodos([...todos, newTodo])
-            setInput('')
+        if (!trimmedText) return
+        
+        const newTodo: TodoProps = {
+            id: generateId(),
+            text: trimmedText,
+            completed: false
         }
+
+        setTodos([...todos, newTodo])
+        setInput('')
     }
 
     return { addTodo } 
