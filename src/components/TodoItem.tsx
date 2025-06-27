@@ -2,11 +2,18 @@ import { useRef } from 'react'
 import { useTodoStore } from '../store/useTodoStore'
 import { TodoProps } from '../interfaces/TodoProps'
 import { useToggleTodo } from '../hooks/useToggleTodo'
+import { useEditTodo } from '../hooks/useEditTodo'
 
 export default function TodoItem({ todo }: { todo:TodoProps }) {
     const { toggleTodo } = useToggleTodo()
     const setSelectedId = useTodoStore(state => state.setSelectedId)
     const dialogRef = useRef<HTMLDialogElement>(null)
+
+    const { editTodo } = useEditTodo()
+
+    const handleEdit = (id: number, text: string) => {
+        editTodo(id, text)
+    }
 
     const handleDialogDelete = (id: number) => {
         setSelectedId(id)
@@ -42,6 +49,7 @@ export default function TodoItem({ todo }: { todo:TodoProps }) {
                 </span>
                 <button
                     className="cursor-pointer text-gray-500"
+                    onClick={() => handleEdit(todo.id, 'Test')}
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
