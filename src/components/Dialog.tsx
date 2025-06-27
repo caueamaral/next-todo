@@ -4,15 +4,30 @@ import { useDeleteTodo } from '../hooks/useDeleteTodo'
 
 export default function Dialog() {
     const selectedId = useTodoStore(state => state.selectedId)
+    const setSelectedId = useTodoStore(state => state.setSelectedId)
+
     const { deleteTodo } = useDeleteTodo()
     const dialogRef = useRef<HTMLDialogElement>(null)
 
     useEffect(() => {
+        const dialog = dialogRef.current
 
-        if (selectedId !== 0 && dialogRef.current) {
-            dialogRef.current.showModal()
+        const handleClose = () => {
+            setSelectedId(0)
         }
-    }, [selectedId])
+
+        if (dialog) {
+            dialog.addEventListener('close', handleClose)
+
+            if (selectedId !== 0) {
+                dialog.showModal()
+            }
+        }
+
+        return () => {
+            dialog?.removeEventListener('close', handleClose)
+        }
+    }, [selectedId, setSelectedId])
 
     return (
         <dialog ref={dialogRef}>
@@ -33,19 +48,12 @@ export default function Dialog() {
                         This action can't be undone.
                     </p>
                     <div className="flex justify-end gap-3 mt-8">
-                        <button
-                            value="cancel"
-                            className="cursor-pointer bg-gray-100 py-2 px-4 rounded"
-                        >
+                        <button value="cancel" className="cursor-pointer bg-gray-100 py-2 px-4 rounded">
                             No
                         </button>
                         <button
                             value="ok"
-                            onClick={() => {
-                                if (selectedId !== null) {
-                                    deleteTodo(selectedId)
-                                }
-                            }}
+                            onClick={() => deleteTodo(selectedId)}
                             className="cursor-pointer bg-red-500 text-white py-2 px-4 rounded"
                         >
                             Yes, delete!
