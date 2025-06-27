@@ -1,12 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
+import { useTodoStore } from '../store/useTodoStore'
 import { useDeleteTodo } from '../hooks/useDeleteTodo'
 
 export default function Dialog() {
-    const [selectedTodoId] = useState<number | null>(null)
+    const selectedId = useTodoStore(state => state.selectedId)
     const { deleteTodo } = useDeleteTodo()
+    const dialogRef = useRef<HTMLDialogElement>(null)
+
+    useEffect(() => {
+
+        if (selectedId !== 0 && dialogRef.current) {
+            dialogRef.current.showModal()
+        }
+    }, [selectedId])
 
     return (
-        <dialog>
+        <dialog ref={dialogRef}>
                 <form method="dialog" className="bg-white fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded p-7 w-96">
                     <header className="flex items-center justify-between">
                         <h2 className="font-bold text-xl">
@@ -33,8 +42,8 @@ export default function Dialog() {
                         <button
                             value="ok"
                             onClick={() => {
-                                if (selectedTodoId !== null) {
-                                    deleteTodo(selectedTodoId)
+                                if (selectedId !== null) {
+                                    deleteTodo(selectedId)
                                 }
                             }}
                             className="cursor-pointer bg-red-500 text-white py-2 px-4 rounded"
