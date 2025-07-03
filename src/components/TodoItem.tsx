@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useTodoStore } from '../store/useTodoStore'
 import { TodoProps } from '../interfaces/TodoProps'
 import { useToggleTodo } from '../hooks/useToggleTodo'
@@ -7,12 +7,20 @@ import { useEditTodo } from '../hooks/useEditTodo'
 export default function TodoItem({ todo }: { todo:TodoProps }) {
     const { toggleTodo } = useToggleTodo()
     const { editTodo } = useEditTodo()
-
+    
     const setSelectedId = useTodoStore(state => state.setSelectedId)
+    
     const dialogRef = useRef<HTMLDialogElement>(null)
+    const inputEditRef = useRef<HTMLInputElement>(null)
 
     const [editInput, setEditInput] = useState<string>('')
     const [isEditing, setIsEditing] = useState<boolean>(false)
+
+    useEffect(() => {
+        if (isEditing && inputEditRef.current) {
+            inputEditRef.current.focus()
+        }
+    }, [isEditing])
 
     const handleDialogDelete = (id: number) => {
         setSelectedId(id)
@@ -39,8 +47,9 @@ export default function TodoItem({ todo }: { todo:TodoProps }) {
                     <>
                         <input
                             type="text"
-                            value={editInput}
                             className="border border-solid border-gray-300 mr-2 px-2 flex-grow"
+                            value={editInput}
+                            ref={inputEditRef}
                             onChange={(e) => setEditInput(e.target.value)}
                         />
                         <button
