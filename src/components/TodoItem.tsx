@@ -54,6 +54,7 @@ export default function TodoItem({ todo }: { todo:TodoProps }) {
                             onKeyDown={(e) => e.key == 'Enter' && handleSave(todo.id, editInput)}
                         />
                         <button
+                            arial-label="Confirm edit todo"
                             className="cursor-pointer text-green-600"
                             onClick={() => handleSave(todo.id, editInput)}
                             >
@@ -86,6 +87,7 @@ export default function TodoItem({ todo }: { todo:TodoProps }) {
                             {todo.text}
                         </span>
                         <button
+                            arial-label="Edit todo"
                             className="cursor-pointer text-gray-500"
                             onClick={() => handleEdit()}
                         >
@@ -94,6 +96,7 @@ export default function TodoItem({ todo }: { todo:TodoProps }) {
                             </svg>
                         </button>
                         <button
+                            arial-label="Delete todo"
                             className="cursor-pointer ml-3 text-red-500 hover:text-red-700"
                             onClick={() => handleDialogDelete(todo.id)}
                         >

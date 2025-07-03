@@ -36,7 +36,10 @@ export default function Dialog() {
                         <h2 className="font-bold text-xl">
                             Delete
                         </h2>
-                        <button className="cursor-pointer text-gray-400">
+                        <button
+                            aria-label="Close modal"
+                            className="cursor-pointer text-gray-400"
+                        >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                             </svg>
@@ -48,10 +51,15 @@ export default function Dialog() {
                         This action can't be undone.
                     </p>
                     <div className="flex justify-end gap-3 mt-8">
-                        <button value="cancel" className="cursor-pointer bg-gray-100 py-2 px-4 rounded">
+                        <button
+                            aria-label="Cancel delete todo"
+                            value="cancel"
+                            className="cursor-pointer bg-gray-100 py-2 px-4 rounded"
+                        >
                             No
                         </button>
                         <button
+                            aria-label="Confirm delete todo"
                             value="ok"
                             className="cursor-pointer bg-red-500 text-white py-2 px-4 rounded"
                             onClick={() => deleteTodo(selectedId)}
