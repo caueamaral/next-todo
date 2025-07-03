@@ -51,6 +51,7 @@ export default function TodoItem({ todo }: { todo:TodoProps }) {
                             value={editInput}
                             ref={inputEditRef}
                             onChange={(e) => setEditInput(e.target.value)}
+                            onKeyDown={(e) => e.key == 'Enter' && handleSave(todo.id, editInput)}
                         />
                         <button
                             className="cursor-pointer text-green-600"
