@@ -19,6 +19,7 @@ export default function Add() {
         <div className="flex">
             <input
                 type="text"
+                arial-label="New todo"
                 placeholder="Add Todo"
                 ref={inputRef}
                 value={input}

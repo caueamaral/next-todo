@@ -47,6 +47,7 @@ export default function TodoItem({ todo }: { todo:TodoProps }) {
                     <>
                         <input
                             type="text"
+                            aria-label={`Edit todo: ${todo.text}`}
                             className="border border-solid border-gray-300 mr-2 px-2 flex-grow"
                             value={editInput}
                             ref={inputEditRef}
@@ -67,6 +68,7 @@ export default function TodoItem({ todo }: { todo:TodoProps }) {
                     <>
                         <input
                             type="checkbox"
+                            aria-label={`Mark todo as ${todo.completed ? 'incomplete' : 'complete'}`}
                             checked={todo.completed}
                             onChange={() => toggleTodo(todo.id)}
                             className="form-checkbox text-blue-500"
