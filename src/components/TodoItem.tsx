@@ -55,11 +55,20 @@ export default function TodoItem({ todo }: { todo:TodoProps }) {
                             onKeyDown={(e) => e.key == 'Enter' && handleSave(todo.id, editInput)}
                         />
                         <button
+                            arial-label="Cancel edit todo"
+                            className="cursor-pointer text-red-500"
+                            onClick={() => setIsEditing(false)}
+                            >
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        <button
                             arial-label="Confirm edit todo"
-                            className="cursor-pointer text-green-600"
+                            className="cursor-pointer text-green-600 ml-3"
                             onClick={() => handleSave(todo.id, editInput)}
                             >
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                             </svg>
                         </button>
@@ -99,7 +108,7 @@ export default function TodoItem({ todo }: { todo:TodoProps }) {
                         </button>
                         <button
                             arial-label="Delete todo"
-                            className="cursor-pointer ml-3 text-red-500 hover:text-red-700"
+                            className="cursor-pointer ml-3 text-red-500"
                             onClick={() => handleDialogDelete(todo.id)}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4">
