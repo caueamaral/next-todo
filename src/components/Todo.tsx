@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react'
-import { useTodoStore } from '../store/useTodoStore'
+import { useEffect } from 'react'
 import { TodoProps } from '../interfaces/TodoProps'
+import { useTodoStore } from '../store/useTodoStore'
 import Header from '../components/Header'
 import Add from '../components/Add'
 import TodoItem from '../components/TodoItem'

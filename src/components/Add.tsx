@@ -6,7 +6,6 @@ export default function Add() {
     const todos = useTodoStore(state => state.todos)
     const input = useTodoStore(state => state.input)
     const setInput = useTodoStore(state => state.setInput)
-
     const { addTodo } = useAddTodo()
 
     const inputRef = useRef<HTMLInputElement>(null)
