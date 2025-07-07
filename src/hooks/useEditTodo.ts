@@ -6,13 +6,14 @@ export const useEditTodo = () => {
     const setTodos = useTodoStore(store => store.setTodos)
 
     const editTodo = (id: number, text: string) => {
-        const editedTodo = todos.map((todo:TodoProps) => {
+        const newTodos:TodoProps[] = todos.map((todo:TodoProps) => {
             if (todo.id === id) todo.text = text
 
             return todo
         })
 
-        setTodos(editedTodo)
+        setTodos(newTodos)
+        sessionStorage.setItem('todos', JSON.stringify([...newTodos]))
     }
 
     return { editTodo }

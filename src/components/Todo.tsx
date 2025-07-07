@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { TodoProps } from '../interfaces/TodoProps'
 import { useTodoStore } from '../store/useTodoStore'
 import Header from '../components/Header'

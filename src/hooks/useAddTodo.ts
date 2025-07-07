@@ -4,7 +4,6 @@ import { useEffect } from 'react'
 import { useTodoStore } from '../store/useTodoStore'
 import { generateId } from '../functions/generateId'
 import { TodoProps } from '../interfaces/TodoProps' 
-import { getTodos } from '../functions/getTodos'
 
 export const useAddTodo = () => {
     const todos = useTodoStore(state => state.todos)
@@ -12,8 +11,14 @@ export const useAddTodo = () => {
     const setInput = useTodoStore(state => state.setInput)
 
     useEffect(() => {
-        const storedTodos:TodoProps[] = getTodos()
-        setTodos([...storedTodos])
+        if (!sessionStorage.getItem('todos')) {
+            sessionStorage.setItem('todos', JSON.stringify([]))
+        }
+
+        const storedTodos = sessionStorage.getItem('todos')
+        const parsedTodos:TodoProps[] = storedTodos ? JSON.parse(storedTodos) : []
+
+        setTodos(parsedTodos)
     }, [])
 
     const addTodo = (text: string) => {
@@ -21,7 +26,7 @@ export const useAddTodo = () => {
 
         if (!trimmedText) return
         
-        const newTodo: TodoProps = {
+        const newTodo:TodoProps = {
             id: generateId(),
             text: trimmedText,
             completed: false
@@ -30,12 +35,7 @@ export const useAddTodo = () => {
         setTodos([...todos, newTodo])
         setInput('')
 
-        const storedTodos:TodoProps[] = getTodos()
-
-        sessionStorage.setItem('todos', JSON.stringify([
-            ...storedTodos,
-            newTodo
-        ]))
+        sessionStorage.setItem('todos', JSON.stringify([...todos, newTodo]))
     }
 
     return { addTodo }
