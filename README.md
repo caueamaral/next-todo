@@ -1,4 +1,4 @@
-Todo List using [Next.js)](https://nextjs.org). [See the project](https://caueamaral.github.io/next-todo).
+Todo List using Next.js. [See the project](https://caueamaral.github.io/next-todo).
 
 <img src="src/images/next-todo.jpg" alt="Next Todo List">
 
