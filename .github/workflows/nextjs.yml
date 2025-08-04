@@ -32,13 +32,15 @@ jobs:
         run: npm test
 
       - name: Build Next.js app
-        run: npm run build
+        run: |
+          npm run build
+          npm run export
         env:
           VITE_ACCESS_TOKEN: ${{ secrets.VITE_ACCESS_TOKEN }}
 
       - name: Deploy with gh-pages
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npx gh-pages -d dist -u "github-actions-bot <support+actions@github.com>"
+          npx gh-pages -d out -u "github-actions-bot <support+actions@github.com>"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
