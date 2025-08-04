@@ -42,7 +42,7 @@ export default function TodoItem({ todo }: { todo:TodoProps }) {
             key={todo.id}
             className="flex items-center justify-between p-2 hover:bg-gray-50"
         >
-            <div className="flex flex-grow items-center">
+            <div className="flex flex-grow items-center max-w-full">
                 {isEditing ? (
                     <>
                         <input

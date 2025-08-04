@@ -24,7 +24,7 @@ export default function Add() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && addTodo(input)}
-                className="border border-gray-300 flex-grow py-1 px-2"
+                className="border border-gray-300 py-1 px-2 flex-grow flex-shrink w-full"
             />
             <button
                 aria-label="Add todo"
