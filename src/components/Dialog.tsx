@@ -48,7 +48,7 @@ export default function Dialog() {
                     <p className="mt-6">
                         Are you sure you want to delete it?
                         <br />
-                        This action can't be undone.
+                        This action can&apos;t be undone.
                     </p>
                     <div className="flex justify-end gap-3 mt-8">
                         <button
