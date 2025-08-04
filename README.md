@@ -2,13 +2,13 @@ Todo List using [Next.js)](https://nextjs.org). [See the project](https://caueam
 
 <img src="src/images/next-todo.jpg" alt="Next Todo List">
 
-## React
+## Technologies
 
+- React (useEffect, useState, useRef)
+- React Testing Library
+- Jest
 - Zustand
 - Tailwind
-- useEffect
-- useState
-- useRef
 
 ### How to use it
 
