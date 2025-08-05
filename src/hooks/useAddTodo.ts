@@ -19,7 +19,7 @@ export const useAddTodo = () => {
         const parsedTodos:TodoProps[] = storedTodos ? JSON.parse(storedTodos) : []
 
         setTodos(parsedTodos)
-    }, [])
+    }, [setTodos])
 
     const addTodo = (text: string) => {
         const trimmedText = text.trim()
