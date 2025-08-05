@@ -13,13 +13,13 @@ export default function Dialog() {
         const dialog = dialogRef.current
 
         const handleClose = () => {
-            setSelectedId(0)
+            setSelectedId('0')
         }
 
         if (dialog) {
             dialog.addEventListener('close', handleClose)
 
-            if (selectedId !== 0) {
+            if (selectedId !== '0') {
                 dialog.showModal()
             }
         }

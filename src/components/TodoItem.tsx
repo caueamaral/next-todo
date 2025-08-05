@@ -22,7 +22,7 @@ export default function TodoItem({ todo }: { todo:TodoProps }) {
         }
     }, [isEditing])
 
-    const handleDialogDelete = (id: number) => {
+    const handleDialogDelete = (id: string) => {
         setSelectedId(id)
         dialogRef?.current?.showModal()
     }
@@ -32,7 +32,7 @@ export default function TodoItem({ todo }: { todo:TodoProps }) {
         setIsEditing(true)
     }
     
-    const handleSave = (id: number, text: string) => {
+    const handleSave = (id: string, text: string) => {
         editTodo(id, text)
         setIsEditing(false)
     }

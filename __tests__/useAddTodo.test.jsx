@@ -16,7 +16,7 @@ describe('useAddTodo', () => {
 
         expect(todosResult.current).toEqual([
             expect.objectContaining({
-                id: expect.any(Number),
+                id: expect.any(String),
                 text: 'Test',
                 completed: false,
             })

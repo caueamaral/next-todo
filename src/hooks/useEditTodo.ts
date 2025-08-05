@@ -5,7 +5,7 @@ export const useEditTodo = () => {
     const todos = useTodoStore(store => store.todos)
     const setTodos = useTodoStore(store => store.setTodos)
 
-    const editTodo = (id: number, text: string) => {
+    const editTodo = (id: string, text: string) => {
         const newTodos:TodoProps[] = todos.map((todo:TodoProps) => {
             if (todo.id === id) todo.text = text
 

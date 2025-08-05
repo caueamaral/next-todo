@@ -5,7 +5,7 @@ export const useDeleteTodo = () => {
     const todos = useTodoStore(store => store.todos)
     const setTodos = useTodoStore(store => store.setTodos)
     
-    const deleteTodo = (id: number) => {
+    const deleteTodo = (id: string) => {
         const newTodos:TodoProps[] = todos.filter(todo => todo.id !== id)
 
         setTodos(newTodos)
