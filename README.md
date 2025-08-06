@@ -33,5 +33,5 @@ npm run dev
 4 - Open localhost in the browser
 
 ```sh
-http://localhost:3000
+http://localhost:3000/next-todo
 ```
